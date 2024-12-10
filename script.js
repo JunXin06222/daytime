@@ -47,7 +47,7 @@ function calculateTimeDifference() {
         return;
     }
 
-    // 轉換為 Date 物件以便計算
+   
     const [startHours, startMinutes, startSeconds = '0'] = startTime.split(':');
     const [endHours, endMinutes, endSeconds = '0'] = endTime.split(':');
 
@@ -57,32 +57,30 @@ function calculateTimeDifference() {
     let endDate = new Date();
     endDate.setHours(parseInt(endHours), parseInt(endMinutes), parseInt(endSeconds));
 
-    // 如果結束時間小於開始時間，假設是跨日
     if (endDate < startDate) {
         endDate.setDate(endDate.getDate() + 1);
     }
 
-    // 計算時間差（毫秒）
     let diff = endDate - startDate;
 
-    // 轉換為時分秒
+    
     const hours = Math.floor(diff / (1000 * 60 * 60));
     diff = diff % (1000 * 60 * 60);
     const minutes = Math.floor(diff / (1000 * 60));
     diff = diff % (1000 * 60);
     const seconds = Math.floor(diff / 1000);
 
-    // 格式化輸出
+ 
     let result = '<p>時間差異：';
     if (hours > 0) {
         result += `${hours} 小時 `;
     }
-    // 總是顯示分鐘和秒數，即使是 0
+    
     result += `${minutes} 分鐘 `;
     result += `${seconds} 秒`;
     result += '</p>';
 
-    // 顯示精確時間
+  
     const totalMinutes = hours * 60 + minutes;
     result += `<p>精確時間：${totalMinutes} 分 ${seconds} 秒</p>`;
     
@@ -90,7 +88,7 @@ function calculateTimeDifference() {
 }
 
 function resetDateCalculator() {
-    // 重置日期計算器的所有輸入和結果
+    
     document.getElementById('startDate').value = '';
     document.getElementById('endDate').value = '';
     document.getElementById('yearsResult').textContent = '';
@@ -99,7 +97,7 @@ function resetDateCalculator() {
     document.getElementById('totalDaysResult').textContent = '';
 }
 
-// 將原有的 resetCalculator 改名為 resetTimeCalculator 以更明確
+
 function resetTimeCalculator() {
     document.getElementById('startTime').value = '';
     document.getElementById('endTime').value = '';
